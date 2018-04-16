@@ -11,15 +11,20 @@ if [ ! -f "$1" ]; then
 fi
 
 for i in $(cat $1); do
+  
+  # This removes comments (# and everything after on a line)
   LINK=${i%#*}
-  #echo $i
-  #echo "--> $LINK "
+  
+  # don't do anything if this line is empty
   if [ -z "$LINK" ]
   then
     continue
   fi
+  
+  # download the link on this line
   echo "downloading: $LINK"
-  #youtube-dl --no-mtime "$LINK"
+  youtube-dl --no-mtime "$LINK"
+
 done
 
 
