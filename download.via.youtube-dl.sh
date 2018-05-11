@@ -10,6 +10,8 @@ if [ ! -f "$1" ]; then
   exit 2
 fi
 
+OPTIONS="--no-mtime --write-auto-sub --sub-lang ja"
+
 for i in $(cat $1); do
   
   # This removes comments (# and everything after on a line)
@@ -23,7 +25,7 @@ for i in $(cat $1); do
   
   # download the link on this line
   echo "downloading: $LINK"
-  youtube-dl --no-mtime "$LINK"
+  youtube-dl ${OPTIONS} "$LINK"
 
 done
 
